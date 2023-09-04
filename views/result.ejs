@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header') -%>
+
+<body>
+
+  <%- include('layouts/navbar') -%>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+  <main id="main">
+    <section class="contact aos-init aos-animate">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <table id="myTable" class="display">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Result</th>
+                  <th>Test Type</th>
+                  <th>Issue Licence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i=0;i<user.length;i++){ %>
+                <tr>
+                  <td>
+                    <%= user[i].firstname+" "+user[i].lastname %></td>
+                  <td><%= user[i].username %></td>
+
+                  <td><%= user[i].result ? 'PASS' : 'FAIL' %></td>
+
+                  <td><%= user[i].TestType %> Test</td>
+
+                  <td>
+                    <% if(user[i].result){ %>
+                    <button type=" button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal<%=[i]%>">
+                      &#x2713;
+                    </button>
+
+                    <div class="modal fade" id="myModal<%=[i]%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+
+                          <div class="modal-body">
+                            Are you sure you want to issue <%= user[i].TestType %> Licence for this user?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <form action="/issuelicence/<%= user[i]._id %>" method="post">
+                              <button type="submit" class="btn btn-primary">Yes</button>
+                            </form>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <%}%>
+                  </td>
+                </tr>
+
+                <%}%>
+
+              </tbody>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <%- include('layouts/footer') -%>
+
+  <%- include('layouts/scripts') -%>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable();
+    });
+  </script>
+</body>
+
+</html>

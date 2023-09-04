@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header') -%>
+
+<body>
+
+  <%- include('layouts/navbar') -%>
+
+  <main id="main">
+    <%- req.toastr.render() %>
+    <section class="contact aos-init aos-animate" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-6">
+
+            <form action="/slot-update" method="post" class="g2-form">
+              <h1 class="text-center p-2">Appointment Slot</h1>
+
+              <div class="row mt-3">
+                <div class="col-md-6 form-group mt-3 w-100 mt-md-0 p-0 inputDiv">
+                  <% 
+                          const today = new Date();
+                          // Format the date to "YYYY-MM-DD"
+                          const todaysDate = today.toISOString().split('T')[0];
+
+                          // After three months date
+                          const date = new Date(todaysDate);
+                          // Add three months to the date
+                          date.setMonth(date.getMonth() + 3);
+                          const threeMonthDate = date.toISOString().split('T')[0];
+                  %>
+                  <input class="form-control" name="appointmentdate" id="appointmentdate" required="" type="date" min="<%=todaysDate%>" max="<%=threeMonthDate%>"><label for="appointmentdate" title="Appointment Date" data-title="Appointment Date"></label>
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <select class="form-select select-deselect" id="select-deselect">
+                  <option disabled selected value="">-- Select/Deselect all --</option>
+                  <option value="Select">Select All</option>
+                  <option value="Deselect">Deselect All</option>
+                </select>
+              </div>
+              <div class="row mt-3 appointment-slot p-2">
+
+              </div>
+
+              <div class="text-center mt-3"><button type="submit">Submit</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let appointmentDate = document.getElementById("appointmentdate");
+      let appointmentSlot = document.querySelector(".appointment-slot");
+      let selectDeselect = document.getElementById("select-deselect");
+      let checkboxes = ""
+      appointmentSlot.style.display = "none";
+      selectDeselect.parentElement.style.display = "none";
+      appointmentDate.addEventListener('input', () => {
+        if (appointmentDate.value === "") {
+          appointmentSlot.style.display = "none";
+          selectDeselect.parentElement.style.display = "none";
+        } else {
+          appointmentSlot.style.display = "flex";
+          selectDeselect.parentElement.style.display = "flex";
+        }
+
+        fetch(`/getslotdata?date=${appointmentDate.value}`)
+          .then((response) => response.text())
+          .then(data => {
+            if (data) {
+              const newdata = JSON.parse(data)
+              //////////////
+              appointmentSlot.innerHTML = '';
+              let html = "";
+              for (const i in newdata) {
+
+                html += (`<div class="form-check w-auto">
+                                  <input class="form-check-input" type="checkbox" id="Checkbox${i}" value="${newdata[i]}" name="checkbox${i}">
+                                  <label class="form-check-label" for="Checkbox${i}">${newdata[i]}</label>
+                                </div>`)
+
+              }
+              appointmentSlot.innerHTML = html;
+              selectDeselect.disabled = false
+              checkboxes = document.querySelectorAll('.form-check-input');
+            } else {
+              appointmentSlot.innerHTML = '';
+              appointmentSlot.innerHTML = (`<div class="form-check w-auto text-center">
+                                  <h4>No Slots Availbale! Please choose different date.</h4>
+                                </div>`)
+              selectDeselect.disabled = true
+            }
+
+            ///////////////
+          })
+          .catch((error) => console.error('Error:', error));
+
+      });
+
+      const AllCheckbox = document.getElementById('select-deselect');
+
+
+      // Add an event listener to the "Select All" checkbox
+      AllCheckbox.addEventListener('change', () => {
+        // Loop through all other checkboxes and set their state based on the "Select All" checkbox
+        if (AllCheckbox.value === "Select") {
+          checkboxes.forEach(checkbox => {
+            checkbox.checked = true;
+          });
+        } else if (AllCheckbox.value === "Deselect") {
+          checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+          });
+        }
+
+      });
+    });
+  </script>
+  <%- include('layouts/footer') -%>
+
+  <%- include('layouts/scripts') -%>
+
+</body>
+
+</html>

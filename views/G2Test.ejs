@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+
+<body>
+  <%- include('layouts/navbar') -%>
+
+  <main id="main">
+    <%- req.toastr.render() %>
+    <section class="contact aos-init aos-animate" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <% if(LicNum=="default") { %>
+            <form action="/g2test/update" method="post" class="g2-form">
+              <h1 class="text-center p-2">G2 Test</h1>
+              <h3 class="p-2">Personal Information</h3>
+              <div class="row">
+                <div class="col-md-6 form-group inputDiv">
+                  <input type="text" name="firstname" class="form-control" id="firstname" required="" /><label for="firstname" title="First Name" data-title="First Name"></label>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0 inputDiv">
+                  <input type="text" class="form-control" name="lastname" id="lastname" required="" /><label for="lastname" title="Last Name" data-title="Last Name"></label>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6 form-group inputDiv">
+                  <input type="number" name="age" class="form-control" id="age" required="" /><label for="age" title="Age" data-title="Age"></label>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0 inputDiv">
+                  <input class="form-control" name="date" id="date" required="" type="date" /><label for="date" title="Date of Birth" data-title="Date of Birth"></label>
+                </div>
+              </div>
+              <div class="form-group mt-3 inputDiv">
+                <input type="text" class="form-control" name="licence_number" id="licence_number" required="" /><label for="licence_number" title="Licence Number" data-title="Licence Number"></label>
+              </div>
+              <h3 class="mt-3 p-2">Car Information</h3>
+              <div class="row">
+                <div class="col-md-6 form-group inputDiv">
+                  <input type="text" name="make" class="form-control" id="make" required="" /><label for="make" title="Brand Name" data-title="Brand Name"></label>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0 inputDiv">
+                  <input type="text" class="form-control" name="model" id="model" required="" /><label for="model" title="Model" data-title="Model"></label>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6 form-group mt-3 mt-md-0 inputDiv">
+                  <input type="number" class="form-control" name="year" id="year" required="" /><label for="year" title="Manufacturing Year" data-title="Manufacturing Year"></label>
+                </div>
+                <div class="col-md-6 form-group inputDiv">
+                  <input type="text" name="plate_number" class="form-control" id="plate_number" required="" /><label for="plate_number" title="License Plate Number" data-title="License Plate Number"></label>
+                </div>
+              </div>
+
+              <div class="text-center mt-3">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            <%}else{%>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Age</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= lic_num.firstname %></td>
+                  <td><%= lic_num.lastname %></td>
+                  <td><%= lic_num.age %></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Brand Name</th>
+                  <th>Model</th>
+                  <th>Manufacturing Year</th>
+                  <th>Licence Plate Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="update-car">
+                  <td><%= lic_num.car_details?.make %></td>
+                  <td><%= lic_num.car_details?.model %></td>
+                  <td><%= lic_num.car_details?.year %></td>
+                  <td><%= lic_num.car_details?.plate_number %></td>
+                </tr>
+              </tbody>
+            </table>
+            <%if(AppId=="default"){%>
+            <form action="/g2slotbooking" method="post" class="g2-form">
+              <h3 class="mt-3 p-2">Slot Booking for G2 Test</h3>
+              <div class="form-group mt-3 inputDiv">
+                <input type="text" class="form-control" name="app_date" id="app_date" required="" /><label for="app_date" title="Appointment Date" data-title="Appointment Date"></label>
+              </div>
+              <div class="form-group mt-3 inputDiv">
+                <select class="form-select select-slot" name="select_slot" id="select_slot" disabled required="">
+                  <option disabled selected value="">
+                    -- Select Appointment Date --
+                  </option>
+                </select>
+              </div>
+              <div class="text-center mt-3">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+
+            <%} else{%> <% if(locals.app_details){%>
+            <% if(lic_num.result==null){ %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Test Type</th>
+                  <th>Appointment Date</th>
+                  <th>Slot Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <%
+                            const date = app_details.Date.toISOString().split('T')[0];
+                            const [year, month, day] = date.split("-");
+    
+                            const convertedDate = `${day}/${month}/${year}`;
+                            %>
+                  <td><%= lic_num.TestType %> Test</td>
+                  <td>
+                    <%= convertedDate %>
+                  </td>
+                  <td>
+                    <%= app_details.Time %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <%}else{%>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Test Type</th>
+                  <th>Result</th>
+                  <th>Comment</th>
+                  <th>Licence Order</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= lic_num.TestType %> Test</td>
+                  <td><%= lic_num.result ? 'Pass' : 'Fail' %></td>
+                  <td><%= lic_num.comment %></td>
+                  <% if(lic_num.result) {%>
+                  <td><%= lic_num.licenseOrderIssued ? 'Issued' : 'Pending' %></td>
+                  <%}else{%>
+                  <td>Rejected</td>
+                  <%}%>
+                            </tr>
+                          </tbody>
+                        </table>
+            <%}}
+            }
+          }%>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+
+  <%- include('layouts/footer') -%> <%- include('layouts/scripts') -%>
+  <script>
+    $(function() {
+      let groupedData = "<%= keys %>";
+      const dateArray = groupedData.split(",");
+
+      function highlightDate(date) {
+        var formattedDate = $.datepicker.formatDate("yy-mm-dd", date);
+        if (dateArray.includes(formattedDate)) {
+          return [true, "highlighted-date", "Highlighted Date"];
+        }
+        return [true, "", ""];
+      }
+      const today = new Date();
+      const date = new Date(today);
+      // Add three months to the date
+      date.setMonth(date.getMonth() + 3); // Add 2 months to the current month
+      $("#app_date").datepicker({
+        minDate: today,
+        maxDate: date,
+        dateFormat: "dd/mm/yy",
+        beforeShowDay: highlightDate,
+        onSelect: function(dateText, inst) {
+          // Event handler for date selection
+          const parsedDate = $.datepicker.parseDate(
+            "dd/mm/yy",
+            appointmentDate.value
+          );
+          const displayFormat = $.datepicker.formatDate(
+            "yy-mm-dd",
+            parsedDate
+          );
+          fetch(`/g2slotdata?date=${displayFormat}`)
+            .then((response) => response.text())
+            .then((data) => {
+              if (data) {
+                const newdata = JSON.parse(data);
+                //////////////
+                selectSlot.innerHTML = "";
+                let html = `<option disabled selected value="">-- Select Time Slot --</option>`;
+                selectSlot.disabled = false;
+                for (const i in newdata) {
+                  const {
+                    Time,
+                    isTimeSlotAvailable
+                  } = newdata[i];
+                  if (isTimeSlotAvailable) {
+                    html += `<option value="${Time}">${Time}</option>`;
+                  } else {
+                    html += `<option disabled value="${Time}">${Time}</option>`;
+                  }
+                }
+                selectSlot.innerHTML = html;
+              } else {
+                selectSlot.disabled = true;
+                selectSlot.innerHTML = "";
+                selectSlot.innerHTML = `<option disabled selected value="">-- No Slots Available --</option>`;
+              }
+
+              ///////////////
+            })
+            .catch((error) => console.error("Error:", error));
+        }, // Set the date format to "dd/mm/yy"
+      });
+    });
+    $("#app_date").on("keydown", function(event) {
+      event.preventDefault();
+    });
+    // on change
+    let appointmentDate = document.getElementById("app_date");
+    let selectSlot = document.getElementById("select_slot");
+  </script>
+</body>
+
+</html>
