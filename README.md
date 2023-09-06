@@ -50,8 +50,8 @@ Follow these steps to install and set up the project:
 6. **Add Your MongoDB URI**:
   Inside the `.env` file, add your MongoDB connection URI in the following format:
   ```
-MONGODB_URI=mongodb://username:password@host:port/database
-```
+  MONGODB_URI=mongodb://username:password@host:port/database
+  ```
   Replace MongoDB URI with your actual Connection String.
 8. 6. **Save the `.env` File**:
   Save the changes you made to the `.env` file.
