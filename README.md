@@ -23,5 +23,5 @@ Website Link :- https://drive-test.onrender.com/
 
 
 # Technologies Used
-![png-transparent-mongodb-original-wordmark-logo-icon-thumbnail](https://github.com/vishalpopat8/Drive_Test/assets/76399188/be3fd81c-40bf-4488-a4c7-78f6d5f4f0f3) **MongoDB**
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
 
