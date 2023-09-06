@@ -53,8 +53,11 @@ Follow these steps to install and set up the project:
     MONGODB_URI=mongodb://username:password@host:port/database
     ```
       Replace MongoDB URI with your actual Connection String.
-8. 6. **Save the `.env` File**:
+7. **Save the `.env` File**:
   Save the changes you made to the `.env` file.
 
-9. **Start the Application**:
-   run command ```npm start```.
+8. **Start the Application**:
+   run command `npm start`.
+     ```
+     npm start
+     ```
