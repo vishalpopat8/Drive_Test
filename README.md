@@ -41,7 +41,7 @@ Follow these steps to install and set up the project:
 1. **Clone or download the Repository**: https://github.com/vishalpopat8/Drive_Test
 2. **Navigate**: Navigate and Open to the Project Directory.
 3.  **Install Dependencies**: Run `npm i` command.
-     ```
+     ```Javascript
     npm i
      ```
 5. **Create a `.env` File**:
