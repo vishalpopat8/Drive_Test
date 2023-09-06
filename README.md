@@ -24,3 +24,14 @@ Website Link :- https://drive-test.onrender.com/
 
 # Technologies Used
 ![My Skills](https://skillicons.dev/icons?i=mongodb,nodejs,express,html,css,js) 
+
+# Other Technologies Used
+**DataTables**: DataTables is a JavaScript plugin for enhancing HTML tables, providing features like sorting, searching, and pagination for efficient data presentation.
+
+**MVC Pattern**: The Model-View-Controller (MVC) design pattern separates an application into three components - Model (data), View (user interface), and Controller (logic), promoting code organization and maintainability.
+
+**EJS (Embedded JavaScript)**: EJS is a simple templating language for JavaScript that allows embedding dynamic data into HTML templates, facilitating server-side rendering in web applications.
+
+**Toastr**: Toastr is a JavaScript library that provides elegant, non-blocking notifications for web applications, making it easy to display messages to users in a visually appealing way.
+
+
