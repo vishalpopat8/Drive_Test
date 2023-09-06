@@ -25,7 +25,7 @@ Website Link :- https://drive-test.onrender.com/
 # Technologies Used
 ![My Skills](https://skillicons.dev/icons?i=mongodb,nodejs,express,html,css,js) 
 
-# Other Technologies Used
+## Other Technologies Used
 **DataTables**: DataTables is a JavaScript plugin for enhancing HTML tables, providing features like sorting, searching, and pagination for efficient data presentation.
 
 **MVC Pattern**: The Model-View-Controller (MVC) design pattern separates an application into three components - Model (data), View (user interface), and Controller (logic), promoting code organization and maintainability.
@@ -34,11 +34,23 @@ Website Link :- https://drive-test.onrender.com/
 
 **Toastr**: Toastr is a JavaScript library that provides elegant, non-blocking notifications for web applications, making it easy to display messages to users in a visually appealing way.
 
-## Installation
-```javascript
-// JavaScript code example
-function greet(name) {
-console.log(Hello, ${name}!);
-}
-greet("User");
-```
+# Installation
+
+Follow these steps to install and set up the project:
+
+1. **Clone or download the Repository**: https://github.com/vishalpopat8/Drive_Test
+2. **Navigate**: Open and Navigate to the Project Directory
+3.  **Install Dependencies**: Run ```npm i``` command.
+  ```npm i```
+4. **Create a `.env` File**:
+  In the project's root directory, create a file named `.env`.
+  Open the `.env` file using a text editor.
+5. **Add Your MongoDB URI**:
+  Inside the `.env` file, add your MongoDB connection URI in the following format:
+  ```MONGODB_URI=mongodb://username:password@host:port/database```
+  Replace MongoDB URI with your actual Connection String.
+6. 6. **Save the `.env` File**:
+  Save the changes you made to the `.env` file.
+
+7. **Start the Application**:
+   run command ```npm start```.
