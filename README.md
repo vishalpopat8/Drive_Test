@@ -45,7 +45,7 @@ Follow these steps to install and set up the project:
      npm i
      ```
 4. **Create a `.env` File**:
-  In the project's root directory, create a file named `.env`.
+  Create a file named `.env` in the project's root directory.
   Open the `.env` file using a text editor.
 5. **Add Your MongoDB URI**:
   Inside the `.env` file, add your MongoDB connection URI in the following format:
@@ -57,7 +57,7 @@ Follow these steps to install and set up the project:
   Save the changes you made to the `.env` file.
 
 7. **Start the Application**:
-   run command `npm start`.
+   Run the command `npm start`.
      ```
      npm start
      ```
