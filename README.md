@@ -39,18 +39,19 @@ Website Link :- https://drive-test.onrender.com/
 Follow these steps to install and set up the project:
 
 1. **Clone or download the Repository**: https://github.com/vishalpopat8/Drive_Test
-2. **Navigate**: Open and Navigate to the Project Directory
+2. **Navigate**: Navigate and Open to the Project Directory.
 3.  **Install Dependencies**: Run ```npm i``` command.
-    \ ```javascript // JavaScript code example function greet(name) { console.log(Hello, ${name}!); } greet("User"); \ ``` 
-4. **Create a `.env` File**:
+     ```javascript // JavaScript code example
+     function greet(name) { console.log(Hello, ${name}!); } greet("User");  ``` 
+5. **Create a `.env` File**:
   In the project's root directory, create a file named `.env`.
   Open the `.env` file using a text editor.
-5. **Add Your MongoDB URI**:
+6. **Add Your MongoDB URI**:
   Inside the `.env` file, add your MongoDB connection URI in the following format:
   ```MONGODB_URI=mongodb://username:password@host:port/database```
   Replace MongoDB URI with your actual Connection String.
-6. 6. **Save the `.env` File**:
+7. 6. **Save the `.env` File**:
   Save the changes you made to the `.env` file.
 
-7. **Start the Application**:
+8. **Start the Application**:
    run command ```npm start```.
