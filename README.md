@@ -23,5 +23,5 @@ Website Link :- https://drive-test.onrender.com/
 
 
 # Technologies Used
-![icons](https://skillicons.dev/icons?i=js,html,css,wasm)
+![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)
 
