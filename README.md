@@ -5,7 +5,7 @@ Drive Test is an integrated driving test management system to facilitate driver 
 Website Link :- https://drive-test.onrender.com/
 
 # Features
-**Sign Up/Login**: Users can create an account as Driver/Admin/Examiner from the login page with the following validations.
+**Sign Up/Login**: Users can create an account as Driver/Admin/Examiner from the login page with the provided validations.
 
 1. **Driver Features**:
   Profile information input.
