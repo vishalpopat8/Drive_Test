@@ -23,5 +23,4 @@ Website Link :- https://drive-test.onrender.com/
 
 
 # Technologies Used
-![My Skills](https://skillicons.dev/icons?i=mongodb,nodejs,express,html,css,js,datatable) 
-
+![My Skills](https://skillicons.dev/icons?i=mongodb,nodejs,express,html,css,js) 
