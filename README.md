@@ -1,11 +1,8 @@
 # Drive Test
 Drive Test is an integrated driving test management system to facilitate driver registration, slot booking for G2 or G licenses, and examiner assessments. Admins have tools to manage slots and issue licenses. This project aims to streamline driver testing for improved efficiency and user satisfaction.
-[Defines a](#defines-a)
-[Website Link](#website-link)
+
 # View Website
-Website Link:- 
-### Defines
-### <a name="website-link" href="https://drive-test.onrender.com/" target="_blank"></a>
+Website Link :- https://drive-test.onrender.com/
 
 # Features
 **Sign Up/Login**: Users can create an account as Driver/Admin/Examiner from the login page with the provided validations.
