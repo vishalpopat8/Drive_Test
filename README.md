@@ -38,7 +38,7 @@ Website Link :- https://drive-test.onrender.com/
 
 Follow these steps to install and set up the project:
 
-1. **Clone or download the Repository**: https://github.com/vishalpopat8/Drive_Test
+1. **Clone or download the Repository**: https://github.com/vishalpopat8/Drive_Test.git
 2. **Navigate**: Navigate and Open to the Project Directory.
 3.  **Install Dependencies**: Run `npm i` command.
      ```
